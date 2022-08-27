@@ -16,13 +16,13 @@ export const TotalCustomers = (props) => (
             gutterBottom
             variant="overline"
           >
-            TOTAL CUSTOMERS
+            ISSUES WORKING ON
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            1,6k
+            0
           </Typography>
         </Grid>
         <Grid item>
@@ -51,7 +51,7 @@ export const TotalCustomers = (props) => (
             mr: 1
           }}
         >
-          16%
+          0%
         </Typography>
         <Typography
           color="textSecondary"
