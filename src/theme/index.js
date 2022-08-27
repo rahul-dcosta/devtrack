@@ -20,7 +20,7 @@ export const theme = createTheme({
           textTransform: 'none'
         },
         sizeSmall: {
-          padding: '6px 18px'
+          padding: '6px 16px'
         },
         sizeMedium: {
           padding: '8px 20px'
