@@ -8,6 +8,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Facebook as FacebookIcon } from '../icons/facebook';
 import { Google as GoogleIcon } from '../icons/google';
 
+const axios = require('axios').default;
+
 const Login = () => {
   const formik = useFormik({
     initialValues: {
@@ -25,8 +27,8 @@ const Login = () => {
         .max(255)
         .required('Password is required')
     }),
-    onSubmit: () => {
-    	console.log('Submitted the login form');
+    onSubmit: (values) => {
+	    console.log(`${values.email} ${values.password}`);
     }
   });
 
