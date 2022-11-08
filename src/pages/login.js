@@ -87,7 +87,7 @@ const Login = () => {
                   color="info"
                   fullWidth
                   startIcon={<FacebookIcon />}
-                  onClick={() => formik.handleSubmit()}
+                  // onClick={() => formik.handleSubmit()}
                   size="large"
                   variant="contained"
                 >
@@ -102,7 +102,7 @@ const Login = () => {
                 <Button
                   color="error"
                   fullWidth
-                  onClick={() => formik.handleSubmit()}
+                  // onClick={() => formik.handleSubmit()}
                   size="large"
                   startIcon={<GoogleIcon />}
                   variant="contained"
