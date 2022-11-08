@@ -7,8 +7,7 @@ import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Facebook as FacebookIcon } from '../icons/facebook';
 import { Google as GoogleIcon } from '../icons/google';
-
-const axios = require('axios').default;
+import axios from 'axios';
 
 const Login = () => {
   const formik = useFormik({
@@ -28,7 +27,16 @@ const Login = () => {
         .required('Password is required')
     }),
     onSubmit: (values) => {
-	    console.log(`${values.email} ${values.password}`);
+	    var email = values.email;
+	    var password = values.password;
+	    axios.post('http://localhost:8000/api/auth/login', {
+		    email: email,
+		    password: password
+		    }, { withCredentials: true }).then(function(response) {
+			// console.log(response);
+		    }).catch(function(error) {
+			// console.log(error);
+		    });
     }
   });
 
