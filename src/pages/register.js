@@ -14,7 +14,7 @@ import {
   Typography
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+import axios from 'axios';
 const Register = () => {
   const formik = useFormik({
     initialValues: {
@@ -50,11 +50,17 @@ const Register = () => {
           'This field must be checked'
         )
     }),
-    onSubmit: () => {
-      Router
-        .push('/')
-        .catch(console.error);
-    }
+    onSubmit: (values) => {
+	
+	axios.post('http://localhost:8000/api/register/create_user', {
+		first_name: values.firstName,
+		last_name: values.lastName,
+		email: values.email,
+		password: values.password
+	}).then((response) => {
+		console.log(response);
+	}).catch((error) => { console.log(error); });
+  	}
   });
 
   return (
