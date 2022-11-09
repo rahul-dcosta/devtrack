@@ -7,12 +7,13 @@ import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Facebook as FacebookIcon } from '../icons/facebook';
 import { Google as GoogleIcon } from '../icons/google';
+import axios from 'axios';
 
 const Login = () => {
   const formik = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
-      password: 'Password123'
+      email: '',
+      password: ''
     },
     validationSchema: Yup.object({
       email: Yup
@@ -25,10 +26,17 @@ const Login = () => {
         .max(255)
         .required('Password is required')
     }),
-    onSubmit: () => {
-      Router
-        .push('/')
-        .catch(console.error);
+    onSubmit: (values) => {
+	    var email = values.email;
+	    var password = values.password;
+	    axios.post('http://localhost:8000/api/auth/login', {
+		    email: email,
+		    password: password
+		    }, { withCredentials: true }).then(function(response) {
+			// console.log(response);
+		    }).catch(function(error) {
+			// console.log(error);
+		    });
     }
   });
 
@@ -87,7 +95,7 @@ const Login = () => {
                   color="info"
                   fullWidth
                   startIcon={<FacebookIcon />}
-                  onClick={() => formik.handleSubmit()}
+                  // onClick={() => formik.handleSubmit()}
                   size="large"
                   variant="contained"
                 >
@@ -102,7 +110,7 @@ const Login = () => {
                 <Button
                   color="error"
                   fullWidth
-                  onClick={() => formik.handleSubmit()}
+                  // onClick={() => formik.handleSubmit()}
                   size="large"
                   startIcon={<GoogleIcon />}
                   variant="contained"
